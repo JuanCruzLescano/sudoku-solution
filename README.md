@@ -1,3 +1,3 @@
 # Sudoku Solution :zap:
 
-**[Solution](/solution.js)**
+**[Solution](/sudoku.js)**
