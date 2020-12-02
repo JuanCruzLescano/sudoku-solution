@@ -12,8 +12,6 @@ function isValid(obj) {
   let valid = false;
   Object.values(obj).forEach(objValue => {
     let tmp = [...new Set(objValue)].reduce((acc, curr) => acc + curr)
-    // console.log("tmp", tmp)
-    // console.log("aux", aux)
     if (tmp !== 45 && tmp !== aux) {
       aux = tmp
     } else {
@@ -22,7 +20,6 @@ function isValid(obj) {
   })
   if (aux && aux !== 45 || aux === 0) {
     valid = false
-    // console.log("valid", valid)
   }
   return valid
 } // Verifica si todas las propiedades de los objetos son validas.
