@@ -8,15 +8,19 @@ function group(obj, index, item) {
 } // Agrupa cada objeto correspondiente
 
 function isValid(obj) {
-  let valid = false
+  let aux;
+  let valid = false;
   Object.values(obj).forEach(objValue => {
-    let tmp = objValue.reduce((acc, curr) => acc + curr)
-    if (tmp === 45) {
-      valid = true
+    let tmp = [...new Set(objValue)].reduce((acc, curr) => acc + curr)
+    if (tmp !== 45 && tmp !== aux) {
+      aux = tmp
     } else {
-      valid = false
+      valid = true
     }
   })
+  if (aux && aux !== 45) {
+    valid = false
+  }
   return valid
 } // Verifica si todas las propiedades de los objetos son validas.
 
