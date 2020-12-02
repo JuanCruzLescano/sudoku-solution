@@ -12,14 +12,17 @@ function isValid(obj) {
   let valid = false;
   Object.values(obj).forEach(objValue => {
     let tmp = [...new Set(objValue)].reduce((acc, curr) => acc + curr)
+    // console.log("tmp", tmp)
+    // console.log("aux", aux)
     if (tmp !== 45 && tmp !== aux) {
       aux = tmp
     } else {
       valid = true
     }
   })
-  if (aux && aux !== 45) {
+  if (aux && aux !== 45 || aux === 0) {
     valid = false
+    // console.log("valid", valid)
   }
   return valid
 } // Verifica si todas las propiedades de los objetos son validas.
@@ -42,6 +45,7 @@ function checkSudoku(board) {
     }
   }
 
+
   if (isValid(row) && isValid(col) && isValid(box)) {
     return 'Finished!'
   }
@@ -63,6 +67,34 @@ console.log(
     [3, 4, 5, 2, 8, 6, 1, 7, 9],
   ])
 ) // Finished!
+
+console.log(
+  checkSudoku([
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ])
+) // Try again!
+
+console.log(
+  checkSudoku([
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5],
+  ])
+) // Try again!
 
 console.log(
   checkSudoku([
